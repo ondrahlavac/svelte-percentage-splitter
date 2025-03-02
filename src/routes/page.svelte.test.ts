@@ -5,13 +5,15 @@ import Page from './+page.svelte';
 
 
 describe('/+page.svelte', () => {
-    test('should calculate default parts correctly', () => {
+    test('should calculate default 50/50 parts correctly', () => {
         render(Page);
 
         const partA = screen.getByTestId('part-a');
         const partB = screen.getByTestId('part-b');
         const total = screen.getByTestId('total');
         const percentage = screen.getByTestId('percentage');
+
+        // 
 
         expect(partA).toHaveValue(150000);
         expect(partB).toHaveValue(150000);
@@ -19,26 +21,6 @@ describe('/+page.svelte', () => {
         expect(percentage).toHaveValue('50');
     });
 });
-/* describe('/+page.svelte', () => {
-    test('should calculate 60/40 split correctly', () => {
-        render(Page);
-
-        const partA = screen.getByTestId('part-a');
-        const total = screen.getByTestId('total');
-        const percentage = screen.getByTestId('percentage');
-
-        //Check default values
-        expect(partA).toHaveValue(150000);
-        
-        // Set division percentage to 60
-        fireEvent.change(percentage, { target: { value: 60 } });
-        expect(percentage).toHaveValue('60');
-
-        const partB = screen.getByTestId('part-b');
-        expect(partB).toHaveValue(100000); // 150000 / (60/100) * (1-60/100) = 100000
-        expect(total).toHaveValue(250000); // 150000 + 100000 = 250000
-    });
-}); */
 
 describe('/+page.svelte', () => {
     test('should calculate 60/40 split correctly using slider', async () => {
